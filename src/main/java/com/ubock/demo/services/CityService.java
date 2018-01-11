@@ -26,7 +26,7 @@ public interface CityService {
      * @param city
      * @return
      */
-    Long saveCity(City city);
+    String saveCity(City city);
 
     /**
      * 更新城市信息

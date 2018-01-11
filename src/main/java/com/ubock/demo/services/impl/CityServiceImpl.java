@@ -22,8 +22,19 @@ public class CityServiceImpl implements CityService {
     }
 
     @Override
-    public Long saveCity(City city) {
-        return cityDao.saveCity(city);
+    public String saveCity(City city) {
+        StringBuilder json = new StringBuilder();
+        json.append("{");
+        long ret = cityDao.saveCity(city);
+        if (ret > 0){
+            json.append(String.format("\"code\":%d,", 0));
+            json.append("\"message\":\"添加成功\"");
+        } else {
+            json.append(String.format("\"code\":%d,", 1));
+            json.append("\"message\":\"添加失败\"");
+        }
+        json.append("}");
+        return json.toString();
     }
 
     @Override
